@@ -12,11 +12,7 @@ def redirect(redirect_url):
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
         final_url = redirect_url + '.' + base_url
-        check_page_validity = requests.get('https://'+final_url)
-        if request.status_code == 200:
-            redirect(base_url)
-        else:
-            return render_template('error.html')
+        redirect('https://'+final_url)
     if "BASE_URL" not in os.environ:
         return render_template('error.html')
 
