@@ -4,7 +4,7 @@ flask_redirect: Redirects requests to appropriate URL
 """
 import os
 import requests
-from flask import Flask, redirect  # From module flask import class Flask
+from flask import Flask, redirect, render_template  # From module flask import class Flask
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 
 @app.route('/redirect/<redirect_url>')
