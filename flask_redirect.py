@@ -7,8 +7,8 @@ import requests
 from flask import Flask, redirect  # From module flask import class Flask
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 
-@app.route('/redirect/<redirect_url>')
-def redirect(redirect_url):
+@app.route('/redirection/<redirect_url>')
+def redirection(redirect_url):
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
         final_url = redirect_url + '.' + base_url
