@@ -12,7 +12,7 @@ def redirect(redirect_url):
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
         final_url = redirect_url + '.' + base_url
-        redirect('https://'+final_url)
+        return redirect('https://'+final_url)
     if "BASE_URL" not in os.environ:
         return render_template('error.html')
 
