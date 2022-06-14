@@ -47,7 +47,7 @@ def base_function():
 def redirection():
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
-        return_value = requests.get('base_url')
+        return_value = requests.get(base_url)
         return return_value.json()
     else: 
         return render_template('error.html')
