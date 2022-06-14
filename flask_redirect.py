@@ -44,7 +44,7 @@ def base_function():
 
 
 @app.route('/status/')
-def redirection():
+def status():
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
         return_value = requests.get(base_url)
