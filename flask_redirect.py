@@ -31,7 +31,7 @@ def base_function():
     
     if "POD_SERVICE_ACCOUNT" in os.environ:
         pod_service_account = os.environ.get('POD_SERVICE_ACCOUNT')
-     else:
+    else:
         return render_template('error.html')
     
     return {
@@ -43,14 +43,11 @@ def base_function():
     }
 
 
-@app.route('/redirection/<redirect_url>')
-def redirection(redirect_url):
-    if "BASE_URL" in os.environ:
-        base_url = os.environ.get('BASE_URL')
-        final_url = redirect_url + '.' + base_url
-        return redirect('https://'+final_url)
-    if "BASE_URL" not in os.environ:
-        return render_template('error.html')
-
+@app.route('/status')
+def status():
+    base_url = os.environ.get('BASE_URL')
+    return_value = requests.get(base_url)
+    return return_value.json()
+    
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=True)
