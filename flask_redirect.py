@@ -43,13 +43,13 @@ def base_function():
     }
 
 
-@app.route('/redirection/<redirect_url>')
-def redirection(redirect_url):
+@app.route('/status/')
+def redirection():
     if "BASE_URL" in os.environ:
         base_url = os.environ.get('BASE_URL')
-        final_url = redirect_url + '.' + base_url
-        return redirect('https://'+final_url)
-    if "BASE_URL" not in os.environ:
+        return_value = requests.get('base_url')
+        return return_value.json()
+    else: 
         return render_template('error.html')
 
 if __name__ == '__main__':
