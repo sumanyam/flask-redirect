@@ -23,7 +23,7 @@ items:
           deployment: flask-redirect-2
       spec:
        containers:
-        - image: 'quay.io/cpranava0/flask-redirect-2:main'
+        - image: 'quay.io/cpranava0/flask-redirect:main'
           name: flask-redirect-2
           ports:
           - containerPort: 5000
