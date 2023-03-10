@@ -4,15 +4,15 @@ items:
   kind: Deployment
   metadata:
     labels:
-      app: flask-redirect-2
-      app.kubernetes.io/component: flask-redirect-2
-      app.kubernetes.io/instance: flask-redirect-2
-    name: flask-redirect-2
+      app: front-end
+      app.kubernetes.io/component: front-end
+      app.kubernetes.io/instance: front-end
+    name: front-end
   spec:
     replicas: 1
     selector:
       matchLabels:
-        deployment: flask-redirect-2
+        deployment: front-end
     strategy: {}
     template:
       metadata:
@@ -20,18 +20,18 @@ items:
           openshift.io/generated-by: OpenShiftNewApp
         creationTimestamp: null
         labels:
-          deployment: flask-redirect-2
+          deployment: front-end
       spec:
        containers:
         - image: 'quay.io/cpranava0/flask-redirect:main'
-          name: flask-redirect-2
+          name: front-end
           ports:
           - containerPort: 5000
             protocol: TCP
           resources: {}
           env:
           - name: BASE_URL
-            value: https://jsonplaceholder.typicode.com/todos/1 
+            value: http://back-end.test.svc.cluster.local:5000
           - name: NODE_NAME
             valueFrom:
               fieldRef:
@@ -59,10 +59,10 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: flask-redirect-2
-      app.kubernetes.io/component: flask-redirect-2
-      app.kubernetes.io/instance: flask-redirect-2
-    name: flask-redirect-2
+      app: front-end
+      app.kubernetes.io/component: front-end
+      app.kubernetes.io/instance: front-end
+    name: front-end
   spec:
     ports:
     - name: 5000-tcp
@@ -70,7 +70,7 @@ items:
       protocol: TCP
       targetPort: 5000
     selector:
-      deployment: flask-redirect-2
+      deployment: front-end
 kind: List
 metadata: {}
 
